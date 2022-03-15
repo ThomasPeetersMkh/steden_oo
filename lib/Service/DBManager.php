@@ -1,17 +1,18 @@
 <?php
 
-class DMManager
+class DBManager
 {
-    public function __construct()
+    private $logger;
+
+    public function __construct($logger)
     {
+        $this->logger = $logger;
     }
 
-    function CreateConnection()
+    public function CreateConnection()
     {
         global $conn;
         global $servername, $dbname, $username, $password;
-
-
 
         // Create and check connection
         try {
@@ -23,11 +24,11 @@ class DMManager
         }
     }
 
-    function GetData( $sql )
+    public function GetData( $sql )
     {
         global $conn;
 
-        CreateConnection();
+        $this->CreateConnection();
 
         //define and execute query
         $result = $conn->query( $sql );
@@ -48,11 +49,11 @@ class DMManager
 
     }
 
-    function ExecuteSQL( $sql )
+    public function ExecuteSQL( $sql )
     {
         global $conn;
 
-        CreateConnection();
+        $this->CreateConnection();
 
         //define and execute query
         $result = $conn->query( $sql );

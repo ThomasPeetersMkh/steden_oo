@@ -10,6 +10,10 @@ class Container{
 
     private $cityStorage;
 
+    private $logger;
+
+    private $DBManager;
+
     public function __construct(array $configuration){
         $this->configuration = $configuration;
     }
@@ -48,5 +52,20 @@ class Container{
             //$this->cityStorage = new JsonFileShipStorage(__DIR__.'/../../resources/ships.json');
         }
         return $this->cityStorage;
+    }
+
+    public function getLogger(){
+        if($this->logger === null){
+            $this->logger = new Logger("log.txt");
+        }
+        return $this->logger;
+    }
+
+    public function getDBManager()
+    {
+        if($this->DBManager===null){
+            $this->DBManager = new DBManager($this->logger);
+        }
+        return $this->DBManager;
     }
 }

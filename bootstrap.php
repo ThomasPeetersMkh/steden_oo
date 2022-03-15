@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/lib/Model/City.php';
 require_once __DIR__ . '/lib/Model/Country.php';
-require_once __DIR__ . '/lib/Model/Log.php';
+require_once __DIR__ . '/lib/Service/Logger.php';
 require_once __DIR__ . '/lib/Model/Task.php';
 require_once __DIR__ . '/lib/Model/User.php';
 require_once __DIR__ . '/lib/Service/CityLoader.php';

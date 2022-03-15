@@ -22,7 +22,7 @@ function PrintNavbar( )
     print $navbar;
 }
 
-function MergeViewWithData( $template, $data )
+function MergeViewWithDataObjects( $template, $data )
 {
     $returnvalue = "";
 
@@ -47,6 +47,31 @@ function MergeViewWithData( $template, $data )
     return $returnvalue;
 }
 
+function MergeViewWithData( $template, $data )
+{
+    $returnvalue = "";
+
+    foreach ( $data as $row )
+    {
+        $output = $template;
+
+        foreach(array_keys($row) as $field )  //eerst "img_id", dan "img_title", ...
+        {
+            $output = str_replace( "@$field@", $row["$field"], $output );
+        }
+
+        $returnvalue .= $output;
+    }
+
+    if ( $data == [] )
+    {
+        $returnvalue = $template;
+    }
+
+    return $returnvalue;
+}
+
+
 function MergeViewWithExtraElements( $template, $elements )
 {
     foreach ( $elements as $key => $element )
@@ -69,7 +94,7 @@ function RemoveEmptyErrorTags( $template, $data )
 {
     foreach ( $data as $row )
     {
-        foreach( object_k($row) as $field )  //eerst "img_id", dan "img_title", ...
+        foreach( array_keys($row) as $field )  //eerst "img_id", dan "img_title", ...
         {
             $template = str_replace( "@$field" . "_error@", "", $template );
         }

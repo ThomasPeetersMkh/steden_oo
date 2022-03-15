@@ -36,7 +36,7 @@ PrintJumbo( $title = "Registreer", $subtitle = "" );
             $output = MergeViewWithData( $output, $data );
             $output = MergeViewWithExtraElements( $output, $extra_elements );
             $output = MergeViewWithErrors( $output, $errors );
-            $output = RemoveEmptyErrorTags( $output, $data );
+            //$output = RemoveEmptyErrorTags( $output, $data );
 
             print $output;
         ?>

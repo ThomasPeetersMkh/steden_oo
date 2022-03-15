@@ -2,7 +2,7 @@
 error_reporting( E_ALL );
 ini_set( 'display_errors', 1 );
 
-require_once "Bootstrap.php";
+require_once "bootstrap.php";
 
 if(isset($configuration)){
     $container = new Container($configuration);
@@ -36,7 +36,7 @@ PrintNavbar();
     $template = file_get_contents("templates/column.html");
 
     //merge
-    $output = MergeViewWithData( $template, $data );
+    $output = MergeViewWithDataObjects( $template, $data );
     print $output;
 ?>
 

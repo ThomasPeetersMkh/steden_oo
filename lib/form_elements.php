@@ -1,12 +1,14 @@
 <?php
 require_once "autoload.php";
+require_once __DIR__ . "/../bootstrap.php";
 
-function MakeSelect( $fkey, $value, $sql )
+
+function MakeSelect( $fkey, $value, $sql,$DBManager)
 {
     $select = "<select id=$fkey name=$fkey value=$value>";
     $select .= "<option value='0'></option>";
 
-    $data = GetData($sql);
+    $data =  $DBManager->GetData($sql);
 
     foreach ( $data as $row )
     {

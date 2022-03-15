@@ -4,8 +4,13 @@ ini_set( 'display_errors', 1 );
 
 $public_access = true;
 require_once "autoload.php";
+require_once "../bootstrap.php";
+if(isset($configuration)){
+    $container = new Container($configuration);
+}
+$DBManager = $container->getDBManager();
 
-$user = LoginCheck();
+$user = LoginCheck($DBManager);
 
 if ( $user )
 {
@@ -19,7 +24,7 @@ else
     GoToNoAccess();
 }
 
-function LoginCheck()
+function LoginCheck($DBManager)
 {
     if ( $_SERVER['REQUEST_METHOD'] == "POST" )
     {
@@ -61,7 +66,7 @@ function LoginCheck()
         $ww = $_POST['usr_password'];
 
         $sql = "SELECT * FROM user WHERE usr_email='$email' ";
-        $data = GetData($sql);
+        $data = $DBManager->GetData($sql);
 
         if ( count($data) > 0 )
         {

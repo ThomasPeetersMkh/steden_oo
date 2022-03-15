@@ -4,10 +4,16 @@ ini_set( 'display_errors', 1 );
 
 $public_access = true;
 require_once "autoload.php";
+require_once "../bootstrap.php";
 
-SaveFormData();
+if(isset($configuration)){
+    $container = new Container($configuration);
+}
+$DBManager = $container->getDBManager();
 
-function SaveFormData()
+SaveFormData($DBManager);
+
+function SaveFormData($DBManager)
 {
     if ( $_SERVER['REQUEST_METHOD'] == "POST" )
     {
@@ -94,7 +100,7 @@ function SaveFormData()
         $sql .= $where;
 
         //run SQL
-        $result = ExecuteSQL( $sql );
+        $result = $DBManager->ExecuteSQL( $sql );
 
         //output if not redirected
         print $sql ;
