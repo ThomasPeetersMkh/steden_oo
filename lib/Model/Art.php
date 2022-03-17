@@ -2,7 +2,10 @@
 
 namespace Model;
 
-class Art
+abstract class Art
 {
+    public function __construct()
+    {
 
+    }
 }

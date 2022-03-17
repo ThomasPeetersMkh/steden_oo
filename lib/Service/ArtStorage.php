@@ -13,10 +13,10 @@ class ArtStorage
         $this->pdo = $pdo;
     }
 
-    public function fetchAllArtsData()
+    public function fetchAllArtsData($museum)
     {
         $pdo = $this->pdo;
-        $statement = $pdo->prepare('SELECT * FROM art');
+        $statement = $pdo->prepare('SELECT * FROM art where ');
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }

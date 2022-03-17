@@ -2,26 +2,36 @@
 
 namespace Service;
 
+
 class ArtLoader implements LoaderInterface
 {
 
-    public function __construct($artStorage)
-    {
+    private $artStorage;
 
+    public function __construct(ArtStorage $artStorage)
+    {
+        $this->artStorage = $artStorage;
     }
 
-    public function getItems()
+    public function getItems($extra)
     {
-
+        $citiesData = $this->artStorage->fetchAllArtsData($extra);
+        $cities = array();
+        foreach ($citiesData as $cityData) {
+            $cities[] = $this->createItemFromData($cityData);
+        }
+        return $cities;
     }
 
     public function getItemById($id)
     {
-        // TODO: Implement getItemById() method.
+        $artArray = $this->artStorage->fetchSingleArtData($id);
+        return $this->createItemFromData($artArray);
     }
 
     public function createItemFromData(array $data)
     {
-        // TODO: Implement createItemFromData() method.
+        if($data["type"]==="statue")
+        return new Art();
     }
 }

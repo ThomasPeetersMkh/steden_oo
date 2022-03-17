@@ -13,7 +13,7 @@ class CityLoader implements LoaderInterface
     /**
      * @return City[]
      */
-    public function getItems()
+    public function getItems($extra)
     {
         $citiesData = $this->cityStorage->fetchAllCitiesData();
         $cities = array();
