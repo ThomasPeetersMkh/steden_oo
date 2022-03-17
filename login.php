@@ -1,12 +1,23 @@
 <?php
+
+use Service\Container;
+
 error_reporting( E_ALL );
 ini_set( 'display_errors', 1 );
 
 $public_access =  true;
-require_once "lib/autoload.php";
 
-PrintHead();
-PrintJumbo( $title = "Login", $subtitle = "" );
+require_once "bootstrap.php";
+
+if(isset($configuration)){
+    $container = new Container($configuration);
+}
+$DBManager = $container->getDBManager();
+$makeHTML = $container->getMakeHTML();
+$security = $container->getSecurity();
+
+$makeHTML->PrintHead();
+$makeHTML->PrintJumbo( $title = "Login", $subtitle = "" );
 ?>
 
 <div class="container">
@@ -20,11 +31,11 @@ PrintJumbo( $title = "Login", $subtitle = "" );
             $output = file_get_contents("templates/login.html");
 
             //add extra elements
-            $extra_elements['csrf_token'] = GenerateCSRF( "login.php"  );
+            $extra_elements['csrf_token'] = $security->GenerateCSRF( "login.php"  );
 
             //merge
-            $output = MergeViewWithData( $output, $data );
-            $output = MergeViewWithExtraElements( $output, $extra_elements );
+            $output = $makeHTML->MergeViewWithData( $output, $data );
+            $output = $makeHTML->MergeViewWithExtraElements( $output, $extra_elements );
 
             print $output;
         ?>

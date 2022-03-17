@@ -3,10 +3,14 @@ error_reporting( E_ALL );
 ini_set( 'display_errors', 1 );
 
 $public_access = true;
-require_once "lib/autoload.php";
+require_once "bootstrap.php";
+if(isset($configuration)){
+    $container = new Container($configuration);
+}
+$makeHTML = $container->getMakeHTML();
 
-PrintHead();
-PrintJumbo( $title = "Geen toegang" );
+$makeHTML->PrintHead();
+$makeHTML->PrintJumbo( $title = "Geen toegang" );
 ?>
 
 <div class="container">

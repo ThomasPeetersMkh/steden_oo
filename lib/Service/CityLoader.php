@@ -1,5 +1,6 @@
 <?php
-
+namespace Service;
+use Model\City;
 class CityLoader
 {
     private $cityStorage;

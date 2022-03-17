@@ -1,4 +1,7 @@
 <?php
+namespace Service;
+use PDO;
+use Model\City;
 
 class CityStorage
 {

@@ -1,12 +1,23 @@
 <?php
+
+use Service\Container;
+
 error_reporting( E_ALL );
 ini_set( 'display_errors', 1 );
 
 $public_access = true;
-require_once "lib/autoload.php";
+require_once "bootstrap.php";
 
-PrintHead();
-PrintJumbo( $title = "Registreer", $subtitle = "" );
+$old_post = $_SESSION["OLD_POST"];
+
+if(isset($configuration)){
+    $container = new Container($configuration);
+}
+$makeHTML = $container->getMakeHTML();
+$security = $container->getSecurity();
+
+$makeHTML->PrintHead();
+$makeHTML->PrintJumbo( $title = "Registreer", $subtitle = "" );
 ?>
 
 <div class="container">
@@ -30,13 +41,13 @@ PrintJumbo( $title = "Registreer", $subtitle = "" );
             $output = file_get_contents("templates/register.html");
 
             //add extra elements
-            $extra_elements['csrf_token'] = GenerateCSRF( "register.php"  );
+            $extra_elements['csrf_token'] = $security->GenerateCSRF( "register.php"  );
 
             //merge
-            $output = MergeViewWithData( $output, $data );
-            $output = MergeViewWithExtraElements( $output, $extra_elements );
-            $output = MergeViewWithErrors( $output, $errors );
-            //$output = RemoveEmptyErrorTags( $output, $data );
+            $output = $makeHTML->MergeViewWithData( $output, $data );
+            $output = $makeHTML->MergeViewWithExtraElements( $output, $extra_elements );
+            $output = $makeHTML->MergeViewWithErrors( $output, $errors );
+            $output = $makeHTML->RemoveEmptyErrorTags( $output, $data );
 
             print $output;
         ?>

@@ -1,5 +1,5 @@
 <?php
-
+namespace Service;
 class MessageService
 {
     private $errors;

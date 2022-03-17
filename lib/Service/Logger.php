@@ -1,5 +1,5 @@
 <?php
-
+namespace Service;
 class Logger
 {
     private $fp;

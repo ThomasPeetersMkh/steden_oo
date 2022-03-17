@@ -1,4 +1,7 @@
 <?php
+
+use Service\Container;
+
 error_reporting( E_ALL );
 ini_set( 'display_errors', 1 );
 
@@ -9,13 +12,14 @@ if(isset($configuration)){
 }
 $cityLoader = $container->getCityloader();
 $cities = $cityLoader->getCities();
+$makeHTML = $container->getMakeHTML();
 
 //var_dump($cities);die;
 
-PrintHead();
-PrintJumbo( $title = "OOP Steden" ,
+$makeHTML->PrintHead();
+$makeHTML->PrintJumbo($title = "OOP Steden" ,
                         $subtitle = "Tips voor citytrips voor vrolijke vakantiegangers!" );
-PrintNavbar();
+$makeHTML->PrintNavbar();
 //PrintMessages();
 ?>
 
@@ -36,7 +40,7 @@ PrintNavbar();
     $template = file_get_contents("templates/column.html");
 
     //merge
-    $output = MergeViewWithDataObjects( $template, $data );
+    $output = $makeHTML->MergeViewWithDataObjects( $template, $data );
     print $output;
 ?>
 

@@ -1,23 +1,24 @@
 <?php
+namespace Service;
+use PDO;
+use PDOException;
 
 class DBManager
 {
     private $logger;
+    private $pdo;
 
-    public function __construct($logger)
+    public function __construct($logger,$pdo)
     {
         $this->logger = $logger;
+        $this->pdo = $pdo;
     }
 
     public function CreateConnection()
     {
-        global $conn;
-        global $servername, $dbname, $username, $password;
-
         // Create and check connection
         try {
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+           return $conn = $this->pdo;
         }
         catch(PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
@@ -26,9 +27,7 @@ class DBManager
 
     public function GetData( $sql )
     {
-        global $conn;
-
-        $this->CreateConnection();
+        $conn = $this->CreateConnection();
 
         //define and execute query
         $result = $conn->query( $sql );
@@ -51,9 +50,7 @@ class DBManager
 
     public function ExecuteSQL( $sql )
     {
-        global $conn;
-
-        $this->CreateConnection();
+        $conn = $this->CreateConnection();
 
         //define and execute query
         $result = $conn->query( $sql );

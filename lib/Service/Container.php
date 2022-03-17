@@ -1,4 +1,6 @@
 <?php
+namespace Service;
+use PDO;
 
 class Container{
 
@@ -13,6 +15,20 @@ class Container{
     private $logger;
 
     private $DBManager;
+
+    private $makeHTML;
+
+    private $makeForm;
+
+    private $loginChecker;
+
+    private $security;
+
+    private $sanitize;
+
+    private $saveForm;
+
+    private $validate;
 
     public function __construct(array $configuration){
         $this->configuration = $configuration;
@@ -64,8 +80,81 @@ class Container{
     public function getDBManager()
     {
         if($this->DBManager===null){
-            $this->DBManager = new DBManager($this->logger);
+            $this->DBManager = new DBManager($this->getLogger(),$this->getPDO());
         }
         return $this->DBManager;
+    }
+
+    /**
+     * @return MakeHTML
+     */
+    public function getMakeHTML()
+    {
+        if($this->makeHTML === null){
+            $this->makeHTML = new MakeHTML();
+        }
+        return $this->makeHTML;
+    }
+    public function getMakeForm()
+    {
+        if($this->makeForm === null){
+            $this->makeForm = new MakeForm();
+        }
+        return $this->makeForm;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLoginChecker()
+    {
+        if($this->loginChecker === null){
+            $this->loginChecker = new LoginChecker($this->getDBManager(),$this->getSanitize());
+        }
+        return $this->loginChecker;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSecurity()
+    {
+        if($this->security === null){
+            $this->security = new Security();
+        }
+        return $this->security;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSanitize()
+    {
+        if($this->sanitize === null){
+            $this->sanitize = new Sanitize();
+        }
+        return $this->sanitize;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSaveForm()
+    {
+        if($this->saveForm === null){
+            $this->saveForm = new SaveForm($this->getDBManager(),$this->getSanitize(),$this->getValidate());
+        }
+        return $this->saveForm;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValidate()
+    {
+        if($this->validate === null){
+            $this->validate = new Validate($this->getLogger(),$this->getDBManager());
+        }
+        return $this->validate;
     }
 }
