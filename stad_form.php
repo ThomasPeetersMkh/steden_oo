@@ -7,9 +7,9 @@ ini_set( 'display_errors', 1 );
 
 require_once "bootstrap.php";
 
-if(isset($configuration)){
-    $container = new Container($configuration);
-}
+/**
+ * @var $container
+ */
 $DBManager = $container->getDBManager();
 $makeHTML = $container->getMakeHTML();
 $makeForm = $container->getMakeForm();

@@ -1,4 +1,7 @@
 <?php
+
+use Service\Container;
+
 session_start();
 
 spl_autoload_register(function($className) {
@@ -14,6 +17,8 @@ $configuration = array(
     'db_user' => 'root',
     'db_pass' => ''
 );
+
+$container = new Container($configuration);
 
 $errors = [];
 

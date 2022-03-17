@@ -3,15 +3,17 @@ error_reporting( E_ALL );
 ini_set( 'display_errors', 1 );
 
 require_once "bootstrap.php";
-if(isset($configuration)){
-    $container = new Container($configuration);
-}
+/**
+ * @var $container
+ */
 $cityLoader = $container->getCityloader();
 $city = $cityLoader->findOneById($_GET['img_id']);
+$makeHTML = $container->getMakeHTML();
 
-PrintHead();
-PrintJumbo();
-PrintNavbar();
+
+$makeHTML->PrintHead();
+$makeHTML->PrintJumbo();
+$makeHTML->PrintNavbar();
 ?>
 
 <div class="container">

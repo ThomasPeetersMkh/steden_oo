@@ -7,11 +7,11 @@ ini_set( 'display_errors', 1 );
 
 require_once "bootstrap.php";
 
-if(isset($configuration)){
-    $container = new Container($configuration);
-}
+/**
+ * @var $container
+ */
 $cityLoader = $container->getCityloader();
-$cities = $cityLoader->getCities();
+$cities = $cityLoader->getItems();
 $makeHTML = $container->getMakeHTML();
 
 //var_dump($cities);die;

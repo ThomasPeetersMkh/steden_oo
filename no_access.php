@@ -4,9 +4,9 @@ ini_set( 'display_errors', 1 );
 
 $public_access = true;
 require_once "bootstrap.php";
-if(isset($configuration)){
-    $container = new Container($configuration);
-}
+/**
+ * @var $container
+ */
 $makeHTML = $container->getMakeHTML();
 
 $makeHTML->PrintHead();

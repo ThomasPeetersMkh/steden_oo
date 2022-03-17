@@ -1,7 +1,7 @@
 <?php
 namespace Service;
 use Model\City;
-class CityLoader
+class CityLoader implements LoaderInterface
 {
     private $cityStorage;
 
@@ -13,12 +13,12 @@ class CityLoader
     /**
      * @return City[]
      */
-    public function getCities()
+    public function getItems()
     {
         $citiesData = $this->cityStorage->fetchAllCitiesData();
         $cities = array();
         foreach ($citiesData as $cityData) {
-            $cities[] = $this->createCityFromData($cityData);
+            $cities[] = $this->createItemFromData($cityData);
         }
         return $cities;
     }
@@ -27,13 +27,13 @@ class CityLoader
      * @param $id
      * @return City|null
      */
-    public function findOneById($id){
+    public function getItemById($id){
         $citiesArray = $this->cityStorage->fetchSingleCityData($id);
-        return $this->createCityFromData($citiesArray);
+        return $this->createItemFromData($citiesArray);
     }
 
-    private function createCityFromData(array $cityData){
-        $city = new City($cityData['img_id'],$cityData['img_filename'],$cityData['img_title'],$cityData['img_width'],$cityData['img_height'],$cityData['img_lan_id'],$cityData['img_date']);
+    public function createItemFromData(array $data){
+        $city = new City($data['img_id'],$data['img_filename'],$data['img_title'],$data['img_width'],$data['img_height'],$data['img_lan_id'],$data['img_date']);
         return $city;
     }
 }

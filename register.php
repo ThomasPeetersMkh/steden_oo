@@ -10,9 +10,9 @@ require_once "bootstrap.php";
 
 $old_post = $_SESSION["OLD_POST"];
 
-if(isset($configuration)){
-    $container = new Container($configuration);
-}
+/**
+ * @var $container
+ */
 $makeHTML = $container->getMakeHTML();
 $security = $container->getSecurity();
 
