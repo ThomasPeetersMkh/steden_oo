@@ -18,14 +18,14 @@ class DBManager
     {
         // Create and check connection
         try {
-           return $conn = $this->pdo;
+           return $this->pdo;
         }
         catch(PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
         }
     }
 
-    public function GetData( $sql )
+    public function GetData($sql)
     {
         $conn = $this->CreateConnection();
 

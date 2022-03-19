@@ -2,7 +2,7 @@
 
 namespace Model;
 
-class Painting extends Art
+class Sculpture extends Art
 {
     public function __construct($id, $name, $artist, $musId, $path)
     {
@@ -12,6 +12,7 @@ class Painting extends Art
 
     public function __toString(): string
     {
-        return $this->name." was painted";
+        // TODO: Implement __toString() method.
+        return $this->name." was sculpted";
     }
 }

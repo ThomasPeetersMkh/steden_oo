@@ -30,6 +30,10 @@ class Container{
 
     private $validate;
 
+    private $artStorage;
+
+    private $artLoader;
+
     public function __construct(array $configuration){
         $this->configuration = $configuration;
     }
@@ -156,5 +160,27 @@ class Container{
             $this->validate = new Validate($this->getLogger(),$this->getDBManager());
         }
         return $this->validate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArtStorage()
+    {
+        if($this->artStorage === null) {
+            $this->artStorage = new ArtStorage($this->getPDO());
+        }
+        return $this->artStorage;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArtLoader()
+    {
+        if($this->artLoader === null) {
+            $this->artLoader = new ArtLoader($this->getArtStorage());
+        }
+        return $this->artLoader;
     }
 }

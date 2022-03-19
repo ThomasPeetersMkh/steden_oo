@@ -3,6 +3,9 @@
 namespace Service;
 
 
+use Model\Painting;
+use Model\Sculpture;
+
 class ArtLoader implements LoaderInterface
 {
 
@@ -13,7 +16,7 @@ class ArtLoader implements LoaderInterface
         $this->artStorage = $artStorage;
     }
 
-    public function getItems($extra)
+    public function getItems($extra="")
     {
         $citiesData = $this->artStorage->fetchAllArtsData($extra);
         $cities = array();
@@ -31,7 +34,11 @@ class ArtLoader implements LoaderInterface
 
     public function createItemFromData(array $data)
     {
-        if($data["type"]==="statue")
-        return new Art();
+        if($data["type"]==="sculpture"){
+            return new Sculpture($data['art_id'],$data['art_name'],$data['art_artist'],$data['art_mus_id'],$data['art_path']);
+        }
+        if($data["type"]==="painting"){
+            return new Painting($data['art_id'],$data['art_name'],$data['art_artist'],$data['art_mus_id'],$data['art_path']);
+        }
     }
 }

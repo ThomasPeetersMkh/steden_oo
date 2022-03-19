@@ -4,7 +4,7 @@ namespace Service;
 
 interface LoaderInterface
 {
-    public function getItems($extra);
+    public function getItems($extra="");
 
     public function getItemById($id);
 

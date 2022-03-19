@@ -39,6 +39,7 @@ if ( key_exists( 'msgs', $_SESSION ) AND is_array( $_SESSION['msgs']) )
 }
 
 //initialize $old_post
+$_SESSION['OLD_POST'] = [];
 $old_post = [];
 
 if ( key_exists( 'OLD_POST', $_SESSION ) AND is_array( $_SESSION['OLD_POST']) )

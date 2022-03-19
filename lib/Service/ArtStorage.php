@@ -16,7 +16,7 @@ class ArtStorage
     public function fetchAllArtsData($museum)
     {
         $pdo = $this->pdo;
-        $statement = $pdo->prepare('SELECT * FROM art where ');
+        $statement = $pdo->prepare("SELECT * from art where art_mus_id=".$museum);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }

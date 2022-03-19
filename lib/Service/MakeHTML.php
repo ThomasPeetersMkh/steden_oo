@@ -52,6 +52,31 @@ class MakeHTML
         return $returnvalue;
     }
 
+    function MergeMuseum( $template, $data )
+    {
+        $returnvalue = "";
+
+        foreach ( $data as $row )
+        {
+            $output = $template;
+            $arr = ($row->getDataAsArray());
+
+            foreach(array_keys($arr) as $field )  //eerst "img_id", dan "img_title", ...
+            {
+                $output = str_replace( "@$field@", $arr["$field"], $output );
+            }
+            $output = str_replace("@info@",$row,$output);
+            $returnvalue .= $output;
+        }
+
+        if ( $data == [] )
+        {
+            $returnvalue = $template;
+        }
+
+        return $returnvalue;
+    }
+
     function MergeViewWithData( $template, $data )
     {
         $returnvalue = "";

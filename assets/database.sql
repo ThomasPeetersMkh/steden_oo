@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.4.22-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.19  Distrib 10.4.21-MariaDB, for Win64 (AMD64)
 --
 -- Host: 127.0.0.1    Database: steden
 -- ------------------------------------------------------
--- Server version	10.4.22-MariaDB
+-- Server version	10.4.21-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -52,10 +52,11 @@ CREATE TABLE `art` (
   `art_artist` varchar(255) DEFAULT NULL,
   `art_mus_id` int(11) NOT NULL,
   `type` varchar(50) DEFAULT NULL,
+  `art_path` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`art_id`),
   KEY `art_mus_id` (`art_mus_id`),
   CONSTRAINT `art_ibfk_1` FOREIGN KEY (`art_mus_id`) REFERENCES `musea` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,6 +65,7 @@ CREATE TABLE `art` (
 
 LOCK TABLES `art` WRITE;
 /*!40000 ALTER TABLE `art` DISABLE KEYS */;
+INSERT INTO `art` VALUES (1,'Le Rétablissement du culte ','Callet, Antoine François',3,'painting','retablissement.jpg'),(2,'Napoléon Bonaparte à Brienne','Rochet, Louis',3,'sculpture','napoleon.jpg'),(3,'The Bones of Mankind','Hans Lützelburger',1,'painting','bonesofmankind.jpg'),(4,'Hercules and Achelous','Unknown',1,'sculpture','herculesandachelous.jpg'),(5,'Head of Nefertiti','Unknown',2,'sculpture','nefertiti.jpg'),(6,'Achilles dressing the wounds of Patroclus','Potter Sosias',2,'painting','achilles.jpg');
 /*!40000 ALTER TABLE `art` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -183,7 +185,7 @@ CREATE TABLE `musea` (
   PRIMARY KEY (`id`),
   KEY `mus_lan_id` (`mus_lan_id`),
   CONSTRAINT `musea_ibfk_1` FOREIGN KEY (`mus_lan_id`) REFERENCES `land` (`lan_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,6 +194,7 @@ CREATE TABLE `musea` (
 
 LOCK TABLES `musea` WRITE;
 /*!40000 ALTER TABLE `musea` DISABLE KEYS */;
+INSERT INTO `musea` VALUES (1,'British Museum',6),(2,'Altes Museum (Old Museum)',4),(3,'Louvre',3);
 /*!40000 ALTER TABLE `musea` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -258,4 +261,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-17 18:37:43
+-- Dump completed on 2022-03-19 10:13:53
