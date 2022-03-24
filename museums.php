@@ -2,6 +2,8 @@
 
 require_once "bootstrap.php";
 
+//Loads the container variable from bootstrap.php
+
 /**
  * @var $container
  */

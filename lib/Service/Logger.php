@@ -1,5 +1,8 @@
 <?php
+//Namespace used for the autoloading function
 namespace Service;
+
+//Used to log certain SQL statements and errors
 class Logger
 {
     private $fp;

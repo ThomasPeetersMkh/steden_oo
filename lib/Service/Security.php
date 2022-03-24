@@ -1,7 +1,8 @@
 <?php
-
+//Namespace used for the autoloading function
 namespace Service;
 
+//generates a crsf token
 class Security
 {
     function GenerateCSRF( string $formname = "noformname" ): string

@@ -1,9 +1,10 @@
 <?php
-
+//Namespace used for the autoloading function
 namespace Service;
 
 use PDO;
 
+//Feetches data from the database for the loader
 class ArtStorage
 {
     private $pdo;

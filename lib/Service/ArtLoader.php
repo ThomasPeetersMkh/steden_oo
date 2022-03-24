@@ -1,11 +1,12 @@
 <?php
-
+//Namespace used for the autoloading function
 namespace Service;
 
 
 use Model\Painting;
 use Model\Sculpture;
 
+//Loader for the Art classes
 class ArtLoader implements LoaderInterface
 {
 

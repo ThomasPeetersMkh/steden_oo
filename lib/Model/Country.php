@@ -1,5 +1,8 @@
 <?php
+//Namespace used for the autoloading function
 namespace Model;
+
+//Makes a country if it's needed
 class Country
 {
     private $id;

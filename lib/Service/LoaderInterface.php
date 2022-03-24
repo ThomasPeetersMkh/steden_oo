@@ -1,7 +1,8 @@
 <?php
-
+//Namespace used for the autoloading function
 namespace Service;
 
+//Interface for the Loader classes
 interface LoaderInterface
 {
     public function getItems($extra="");

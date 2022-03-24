@@ -1,7 +1,9 @@
 <?php
+//Namespace used for the autoloading function
 namespace Service;
 use PDO;
 
+//Contains all the services classes to avoid running more than one instance of a Service object
 class Container{
 
     private $configuration;

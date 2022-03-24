@@ -1,5 +1,8 @@
 <?php
+//Namespace used for the autoloading function
 namespace Service;
+
+//used to save the services
 class MessageService
 {
     private $errors;

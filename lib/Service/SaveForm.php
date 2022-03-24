@@ -1,7 +1,8 @@
 <?php
-
+//Namespace used for the autoloading function
 namespace Service;
 
+//used to save the forms
 class SaveForm
 {
     private $DBManager;

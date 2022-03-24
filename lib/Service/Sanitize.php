@@ -1,7 +1,8 @@
 <?php
-
+//Namespace used for the autoloading function
 namespace Service;
 
+//cleans inputs from the user
 class Sanitize
 {
     function StripSpaces( array $arr ): array

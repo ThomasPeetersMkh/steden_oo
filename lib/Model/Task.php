@@ -1,5 +1,8 @@
 <?php
+//Namespace used for the autoloading function
 namespace Model;
+
+//Task class
 class Task
 {
     private $id;

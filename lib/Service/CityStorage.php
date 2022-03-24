@@ -1,8 +1,10 @@
 <?php
+//Namespace used for the autoloading function
 namespace Service;
 use PDO;
 use Model\City;
 
+//Allows the Loader classes to get items from the database
 class CityStorage
 {
     private $pdo;

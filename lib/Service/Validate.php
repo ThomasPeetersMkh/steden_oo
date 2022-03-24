@@ -1,7 +1,8 @@
 <?php
-
+//Namespace used for the autoloading function
 namespace Service;
 
+//Used to validate certain field form
 class Validate
 {
     private $logger;

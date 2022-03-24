@@ -1,6 +1,9 @@
 <?php
+//Namespace used for the autoloading function
 namespace Service;
 use Model\City;
+
+//Loads the cities
 class CityLoader implements LoaderInterface
 {
     private $cityStorage;

@@ -1,7 +1,9 @@
 <?php
 
+//Namespace used for the autoloading function
 namespace Model;
 
+//Abstract class provided to Painting/Sculpture
 abstract class Art
 {
     protected $id;

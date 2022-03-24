@@ -1,7 +1,8 @@
 <?php
-
+//Namespace used for the autoloading function
 namespace Service;
 
+//checks if the login is valid or not
 class LoginChecker
 {
     private $DBManager;

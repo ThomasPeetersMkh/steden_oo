@@ -1,7 +1,8 @@
 <?php
-
+//Namespace used for the autoloading function
 namespace Service;
 
+//Generates a form
 class MakeForm
 {
     function MakeSelect( $fkey, $value, $sql,$DBManager)

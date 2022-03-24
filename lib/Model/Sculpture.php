@@ -1,5 +1,5 @@
 <?php
-
+//Namespace used for the autoloading function
 namespace Model;
 
 class Sculpture extends Art
@@ -9,10 +9,9 @@ class Sculpture extends Art
         parent::__construct($id, $name, $artist, $musId, $path);
     }
 
-
+    //Provides text to be printed in the HTML
     public function __toString(): string
     {
-        // TODO: Implement __toString() method.
         return $this->name." was sculpted";
     }
 }

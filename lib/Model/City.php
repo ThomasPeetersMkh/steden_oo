@@ -1,5 +1,8 @@
 <?php
+//Namespace used for the autoloading function
 namespace Model;
+
+//Saves data from a city to be loaded in HTML
 class City
 {
     private $id;

@@ -1,5 +1,8 @@
 <?php
+//Namespace used for the autoloading function
 namespace Model;
+
+//User class
 class User
 {
     private $userId;

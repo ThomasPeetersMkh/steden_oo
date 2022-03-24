@@ -1,8 +1,10 @@
 <?php
+//Namespace used for the autoloading function
 namespace Service;
 use PDO;
 use PDOException;
 
+//Manages non-specific database requests
 class DBManager
 {
     private $logger;

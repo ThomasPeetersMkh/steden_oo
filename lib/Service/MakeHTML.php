@@ -1,7 +1,8 @@
 <?php
-
+//Namespace used for the autoloading function
 namespace Service;
 
+//functions used to generate HTML
 class MakeHTML
 {
     function PrintHead()
